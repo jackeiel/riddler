@@ -17,21 +17,21 @@ three tickets to begin play. Which is more likely: that you had seen at least
 one of these three tickets before, or that they were all new to you?
 '''
 
-
 import numpy as np
 from collections import deque
+import statistics
 
 def games():
     tickets = deque(range(1,31))
     np.random.shuffle(tickets)
     hand1 = []
     for i in range(6):
-        hand1.extend([tickets[i]])
+        hand1.append(tickets[i])
 
     np.random.shuffle(tickets)
     hand2 = []
     for i in range(3):
-        hand2.extend([tickets[i]])
+        hand2.append(tickets[i])
 
     for i in range(len(hand2)):
         if hand2[i] in hand1:
@@ -42,10 +42,12 @@ def MonteCarlo():
     seen = 0
     for i in range(50000):
         seen += games()
-    print('Hands with similar cards:')
-    print(seen)
-    print('% of second game hands with simlar cards:')
-    print(float(seen)/float(50000))
-    return ('Done')
+    return seen/50000
 
-print(MonteCarlo())
+def CTL():
+    avg = []
+    for i in range(100):
+        avg.append(MonteCarlo())
+    return statistics.mean(avg)
+
+print(CTL())
