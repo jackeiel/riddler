@@ -15,6 +15,10 @@ Later, because you enjoyed it so much, you and your friends play a second game.
 The ticket cards are all returned and reshuffled. Again, you are dealt a set of
 three tickets to begin play. Which is more likely: that you had seen at least
 one of these three tickets before, or that they were all new to you?
+
+SOLUTION:
+https://fivethirtyeight.com/features/does-your-gift-card-still-have-free-drinks-on-it/
+
 '''
 
 import numpy as np
@@ -51,3 +55,9 @@ def CTL():
     return statistics.mean(avg)
 
 print(CTL())
+
+###########################
+#                         #
+#   Result: 0.50127       #
+#                         #
+###########################
